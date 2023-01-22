@@ -10,14 +10,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <title>Sun-shine</title>
+  <title>Hello, world!</title>
 
   <style>
-    body {
-        background-color: #2C3E50;
-    }
     nav{
-      background-color: black;
+      background-color: white;
     }
     .one-edge-shadow {
               box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
@@ -36,8 +33,8 @@
   <nav class="one-edge-shadow 
   sticky-top navbar 
   navbar-expand-lg
-   navbar-light bg-black">
-    <a class="navbar-brand" href="/" style="color: white;">Sun-shine</a>
+   navbar-light bg-white">
+    <a class="navbar-brand" href="/">E-Shop</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -46,7 +43,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/store" style="color: white;">Catering<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/store">Store <span class="sr-only">(current)</span></a>
         </li>
 
       </ul>
@@ -54,25 +51,25 @@
 
       <ul class=" navbar-nav my-2 my-lg-0">
         <li class="nav-item ">
-          <a class="nav-link" href="/cart" style="color: white;">Cart 
+          <a class="nav-link" href="/cart">Cart 
             <span class="badge badge-info">{{request.session.cart.keys|length}}</span>
             <span class="sr-only">(current)</span></a>
         </li>
         {% if request.session.customer %}
         
         <li class="nav-item ">
-          <a class="nav-link" href="/orders" style="color: white;">Orders<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/orders">Orders<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="/logout" style="color: white;">Logout<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>
         </li>
         {% else %}
        
         <li class="nav-item ">
-          <a class="nav-link" href="/signup" style="color: white;">Signup<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/signup">Signup<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="/login" style="color: white;">Login<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
         </li>
         {% endif %}
 

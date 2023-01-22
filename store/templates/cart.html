@@ -6,29 +6,31 @@
 {% load custom_filter %}
 <div class="container">
    <div class="border rounded p-4 m-4">
-        <p class="display-4 pl-4 ml-4">Your Cart</p>
+        <p class="display-4 pl-4 ml-4" style="color: white;">Your Selected Items</p>
         <hr>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Sno.</th>
-                    <th>Image</th>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
+                    <th style="color: white;">Sno.</th>
+                    <th style="color: white;">Image</th>
+                    <th style="color: white;">Product</th>
+                    <th style="color: white;">Price</th>
+                    <th style="color: white;">Quantity</th>
+                    <th style="color: white;">Total</th>
+                    <th style="color: white;">Action</th>
                 </tr>
             </thead>
             <tbody>
-                
+              cart
                 {% for product in products %}
                 <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td><img style="height: 80px;" class="rounded-circle" src="{{product.image.url}}" alt=""></td>
-                    <td>{{product.name}}</td>
-                    <td>{{product.price|currency}}</td>
-                    <td>{{product|cart_quantity:request.session.cart}}</td>
-                    <td>{{product|price_total:request.session.cart|currency}}</td>
+                    <td style="color: white;">{{forloop.counter}}</td>
+                    <td style="color: white;"><img style="height: 80px;" class="rounded-circle" src="{{product.image.url}}" alt=""></td>
+                    <td style="color: white;">{{product.name}}</td>
+                    <td style="color: white;">{{product.price}}</td>
+                    <td style="color: white;">{{product|cart_quantity:request.session.cart}}</td>
+                    <td style="color: white;">{{product|price_total:request.session.cart|currency}}</td>
+                    <td style="color: white;"><a href="store">Edit</a></td>
                 </tr>
 
                 {% endfor %}
@@ -38,14 +40,14 @@
             <tfoot>
                 <tr>
                     <th colspan="4"></th>
-                    <th class="" colspan="">Total</th>
-                    <th>{{products|total_cart_price:request.session.cart|currency}}</th>
+                    <th class="" colspan="" style="color: white;">Total</th>
+                    <th style="color: white;">{{products|total_cart_price:request.session.cart|currency}}</th>
                 </tr>
             </tfoot>
         </table>
         <hr>
         <div class="m-3 p-3">
-            <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info border rounded  col-lg-3 float-right">Check out</a>
+            <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info border rounded  col-lg-3 float-right">Place Order</a>
         </div>
    </div>
 </div>
@@ -59,7 +61,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">
-              Check Out Form
+            Your Order Details
           </h5>
           <hr>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -71,17 +73,42 @@
             <form action="/check-out" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                  <label for="">Address</label>
-                  <input type="text" name="address" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                  <label for="">Delivery Address</label>
+                  <input type="text" name="address" id="" class="form-control" placeholder="" aria-describedby="helpId" required>
                   
                 </div>
                 <div class="form-group">
-                    <label for="">Phone</label>
-                    <input type="text" name="phone" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                  </div>
+                  <label for="">phone</label>
+                  <input type="text" name="phone" id="" class="form-control" placeholder="" aria-describedby="helpId" required>
+                  
+                </div>
 
-                  <input type="submit" class="btn float-right btn-outline-info col-lg-6" value="Check out">
-            </form>
+                <div class="form-group">
+                  <label for="">Delivery date</label>
+                  <input type="date" name="date" id="" class="form-control" placeholder="" aria-describedby="helpId" required>
+                  
+                </div>
+                <div class="form-group">
+                    <label for="">delivery time</label>
+                    <input type="time" name="time" id="" class="form-control" placeholder="" aria-describedby="helpId" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Total Payment</label><p><input type="text" name="total" value="{{products|total_cart_price:request.session.cart|divide:2|currency}}" disabled>
+                    <!-- <input type="text" name="address" id="" class="form-control" placeholder="" aria-describedby="helpId" required> -->
+                    
+                  </div>
+                  <div class="form-group">
+                    <label for="">Advance Payment</label><p><input type="text" name="advance" value="{{products|total_cart_price:request.session.cart|divide:2|currency}}" disabled>
+                    <!-- <input type="text" name="address" id="" class="form-control" placeholder="" aria-describedby="helpId" required> -->
+                    
+                  </div>
+                  <div class="form-group">
+                    <label for="">Remaining Payment</label><p><input type="text" name="remaining" value="{{products|total_cart_price:request.session.cart|divide:2|currency}}" disabled>
+                    <!-- <input type="text" name="address" id="" class="form-control" placeholder="" aria-describedby="helpId" required> -->
+                  </div>
+          
+                  <button type="submit" class="btn float-right btn-outline-info col-lg-6" value="Payment" name="p_button">Payment</button>
+              </form>
           </div>
         </div>
         

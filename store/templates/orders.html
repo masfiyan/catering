@@ -6,32 +6,32 @@
 {% load custom_filter %}
 <div class="container">
    <div class="border rounded p-4 m-4">
-        <p class="display-4 pl-4 ml-4">Your Orders</p>
+        <p class="display-4 pl-4 ml-4" style="color: white;">Your Orders</p>
         <hr>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Sno.</th>
-                    <th>Image</th>
-                    <th>Product</th>
-                    <th>Date</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Status</th>
+                    <th style="color: white;">Sno.</th>
+                    <th style="color: white;">Image</th>
+                    <th style="color: white;">Product</th>
+                    <th style="color: white;">Date</th>
+                    <th style="color: white;">Price</th>
+                    <th style="color: white;">Quantity</th>
+                    <th style="color: white;">Total</th>
+                    <th style="color: white;">Status</th>
                 </tr>
             </thead>
             <tbody>
                 
                 {% for order in orders %}
                 <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td><img style="height: 80px;" class="rounded-circle" src="{{order.product.image.url}}" alt=""></td>
-                    <td>{{order.product.name}}</td>
-                    <td>{{order.date}}</td>
-                    <td>{{order.price|currency}}</td>
-                    <td>{{order.quantity}}</td>
-                    <td>{{order.quantity|multiply:order.price|currency}}</td>
+                    <td style="color: white;">{{forloop.counter}}</td>
+                    <td style="color: white;"><img style="height: 80px;" class="rounded-circle" src="{{order.product.image.url}}" alt=""></td>
+                    <td style="color: white;">{{order.product.name}}</td>
+                    <td style="color: white;">{{order.date}}</td>
+                    <td style="color: white;">{{order.price|currency}}</td>
+                    <td style="color: white;">{{order.quantity}}</td>
+                    <td style="color: white;">{{order.quantity|multiply:order.price|currency}}</td>
                     {% if order.status %}
                     <td><small class="badge badge-success">Completed</small></td>
                     {%else%}

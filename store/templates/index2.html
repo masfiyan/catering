@@ -35,21 +35,21 @@
 						<!-- {{product | is_in_cart:request.session.cart }} -->
 					</div>
 
-					<div class="card-footer p-0 no-gutters" >
+					<div class="card-footer p-0 no-gutters">
 
 						{% if product|is_in_cart:request.session.cart %}
-						<div class="row no-gutters" >
-							<form action="/#{{product.id}}" class="col-2 " method="post" >
+						<div class="row no-gutters">
+							<form action="/#{{product.id}}" class="col-2 " method="post">
 								{% csrf_token %}
 								<input hidden type="text" name='product' value='{{product.id}}'>
 								<input hidden type="text" name='remove' value='True'>
-								<input type="submit" value=" Delete " class="btn btn btn-light border-right" style="color: red;">
+								<input type="submit" value=" - " class="btn btn-block btn-light border-right">
 							</form>
 							<div class="text-center col">{{product|cart_quantity:request.session.cart}} in Cart</div>
 							<form action="/#{{product.id}}" class="col-2 " method="post">
 								{% csrf_token %}
 								<input hidden type="text" name='product' value='{{product.id}}'>
-								<input type="submit" value=" Add " class="btn btn-block btn-light border-left" style="color: green;">
+								<input type="submit" value=" + " class="btn btn-block btn-light border-left">
 							</form>
 						</div>
 						{% else %}

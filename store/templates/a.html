@@ -1,23 +1,35 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <title>Sun-shine</title>
-
+  <title>Catering Order Payment</title>
   <style>
+    /* Define a background color */
+
     body {
         background-color: #2C3E50;
     }
     nav{
       background-color: black;
+    }
+    /* Define a container for the text */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    /* Define the text style */
+    .container h1 {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      color: black;
     }
     .one-edge-shadow {
               box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
@@ -28,11 +40,7 @@
 }
   </style>
 </head>
-
 <body>
-
-  <!-- navbar -->
-
   <nav class="one-edge-shadow 
   sticky-top navbar 
   navbar-expand-lg
@@ -83,21 +91,9 @@
 
     </div>
   </nav>
-
-
-    {% block content %}{% endblock %}
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+  <div class="container">
+    <h1>Now go to the office and pay for the order to Catering manager</h1>
+  </div>
 </body>
-
 </html>
+
