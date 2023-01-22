@@ -23,3 +23,6 @@ class Product(models.Model):
             return Product.objects.filter(category = category_id)
         else:
             return Product.get_all_products();
+    
+    def __str__(self):
+        return self.name

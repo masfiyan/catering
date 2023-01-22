@@ -1,0 +1,28 @@
+<html>
+<body>
+<h1> customer </h1>
+
+<form method="POST">
+ {% csrf_token %}
+{% for customer in customers %} 
+
+<!-- {% comment %} <a href='http://127.0.0.1:8000/catering_manager' class="customer-button">{{ customer.name  }}</a> {% endcomment %} -->
+<input type="submit" name="{{customer}}" value="{{ customer }}">
+
+{% endfor %}
+</form>
+ 
+
+<style>
+{% comment %} .customer-button {
+      background-color: blue;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      /* additional styles */
+  } {% endcomment %}
+</style>  
+  
+
+</body>   
+</html>

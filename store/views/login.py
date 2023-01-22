@@ -15,6 +15,10 @@ class Login(View):
         email = request.POST.get('email')
         password = request.POST.get('password')
         customer = Customer.get_customer_by_email(email)
+        if email == "chef@gmail.com" and password == "123!@#asf":
+            return redirect('raw_material_order')
+        elif email == "catering_manager@gmail.com" and password == "123!@#asf":
+            return redirect('customer')
         error_message = None
         if customer:
             flag = check_password(password, customer.password)
