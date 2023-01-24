@@ -6,10 +6,11 @@ from django.utils import timezone
 from datetime import date
 
 
-class Raw_material(models.Model):
+class vendor(models.Model):
 
     item = models.TextField(default="")
     quantity = models.IntegerField(default=1)
+    price = models.IntegerField(default=0)
     # def __str__(self):
     #     return str(self.id1)
     # @staticmethod

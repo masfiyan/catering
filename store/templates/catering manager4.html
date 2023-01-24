@@ -29,6 +29,11 @@
 
       </ul>
 
+
+
+
+
+
       </ul>
 
 
@@ -50,48 +55,12 @@
   font-size: 30px;
 }
   </style>
-
-<h1>Catering Manager</h1>
+<h1>Vendor Bill</h1><p></p><p></p>
 <div id="receipt-container">
-    
-      
-    
-    <br>
-    <label for="name">Order ID</label>
-    <!-- <input type="text", placeholder="{{ name }}" disabled > -->
-    <p style="color: black;">{{item.name}}</p>
-    <br>
-    
-    <p>{{address}}</p>
-    <br>
-    <label for="phone">Phone Number:</label>
-    <p style="color: black;">{{item.phone}}</p>
-
-    <br>
-    <label for="date">Booking Date:</label>
-    <p style="color: black;">{{item.date}}</p>
-    <br>
-    <label for="time">Delivery Time:</label>
-    <p style="color: black;">{{item.d_time}}</p>
-    <br>
-    <label for="email">Delivery Date</label>
-    <p style="color: black;">{{item.d_date}}</p>
-    <br>
-  </form>
-    
  
     
-    
-    
-
- 
-    <!-- <label for="order-id">Order ID:</label>
-    <select id="order-id" onchange="loadOrder()">
-    {% comment %} {% for order in orders %} {% endcomment %}
-     <option value="{{ order.item }}">{{ order.id }}</option> -->
-   
       
-      <!-- Add options for each order here -->
+
     </select>
     <br>
     <table id="order-items">
@@ -100,19 +69,22 @@
       
         <th>Quantity</th>
         <th>Price</th>
-        {% for item_dict in orders %}
+        
+        {% for item_dict in customer %}
         <tr>
-            <th>{{item_dict.product}}</th>
+            <th>{{item_dict.item}}</th>
             <th>{{item_dict.quantity}}</th>
             <th>{{item_dict.price}}</th>
         </tr>
     {% endfor %}
+    
        
 
     </table>
+    <p>Total : {{ price }}</p>
     <form method="POST">
       {% csrf_token %}
-    <button type="submit" name="b_sent" value="<a hreh='sent_chef.html'>Sent</a>">Sent</button>
+    
   </form>
 
   

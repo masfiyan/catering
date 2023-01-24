@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Catering Order Payment</title>
+  <style>
+    /* Define a background color */
+
+    body {
+        background-color: #2C3E50;
+    }
+    nav{
+      background-color: black;
+    }
+    /* Define a container for the text */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    /* Define the text style */
+    .container h1 {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      color: black;
+    }
+    .one-edge-shadow {
+              box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
+}
+.display-8{
+  font-weight: 200;
+  font-size: 30px;
+}
+  </style>
+</head>
+<body>
+  <nav class="one-edge-shadow 
+  sticky-top navbar 
+  navbar-expand-lg
+   navbar-light bg-black">
+    <a class="navbar-brand" href="/" style="color: white;">Sun-shine</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/store" style="color: white;">Catering<span class="sr-only">(current)</span></a>
+        </li>
+
+      </ul>
+
+
+
+
+    </div>
+  </nav>
+  <h1 style="color: white">Vendor</h1>
+<div id="vendor-container">
+  <form method="POST" enctype="application/json">
+    {% csrf_token %}
+    <label for="item">Item:</label>
+    <input type="text" id="item">
+    <br>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity">
+    <br>
+    <label for="price">Price:</label>
+    <input type="number" id="price">
+    <br>
+    <button type="button" onclick="addItem()">Add</button>
+    <br>
+    <table id="item-list">
+      <tr>
+        <th>S.No</th>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        
+      </tr>
+    </table>
+    <br>
+    <input type="hidden" name="list" value=itemlist>
+    <button type="button" onclick="sendBill()" >sent to Vendor</button>
+    <button type="submit" name="b_sent" value="<a hreh='shef wait.html'>next</a>">Next</button>
+    </form>
+</div>
+
+<style>
+#vendor-container {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+input[type="text"], input[type="number"] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+button[type=button]{
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* body {
+    background-color: #444442;
+    padding-top: 0px;
+} */
+/* h1 {
+    font-family: 'Poppins', sans-serif, 'arial';
+    font-weight: 200;
+    font-size: 72px;
+    color: white;
+    text-align: center;
+} */
+</style>
+<script>
+let itemList = [];
+let sNo = 1;
+
+function addItem() {
+  // Get the item, quantity, and price from the input fields
+  const item = document.getElementById("item").value;
+  const quantity = document.getElementById("quantity").value;
+  const price = document.getElementById("price").value;
+
+
+  // Create a new object for the item
+  const newItem = {
+    sNo: sNo,
+    item: item,
+    quantity: quantity,
+    price: price,
+  };
+
+  // Add the item to the itemList array
+  itemList.push(newItem);
+
+  // Clear the input fields
+  document.getElementById("item").value = "";
+  document.getElementById("quantity").value = "";
+  document.getElementById("price").value = "";
+
+  // Increment the serial number
+  sNo++;
+
+  // Call the function to update the table
+  updateTable();
+}
+
+function updateTable() {
+  // Get the table element
+  const table = document.getElementById("item-list");
+
+  // Clear the existing rows from the table
+  table.innerHTML = "";
+
+  // Add the header row to the table
+  table.innerHTML = "<tr><th>S.No</th><th>Item</th><th>Quantity</th><th>Price";
+
+  // Add a new row for each item in the itemList array
+  for (let i = 0; i < itemList.length; i++) {
+    const item = itemList[i];
+    const row = table.insertRow();
+    const sNoCell = row.insertCell(0);
+    const itemCell = row.insertCell(1);
+    const quantityCell = row.insertCell(2);
+    const priceCell = row.insertCell(3);
+    sNoCell.innerHTML = item.sNo;
+    itemCell.innerHTML = item.item;
+    quantityCell.innerHTML = item.quantity;
+    priceCell.innerHTML = item.price;
+  }
+}
+var csrftoken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+
+function sendBill() {
+  // Use the fetch API to send a POST request to the server with the itemList data
+  fetch("vendor3", {
+    method: "POST",
+    body: JSON.stringify({itemList}),
+    headers: { "Content-Type": "application/json","X-CSRFToken": csrftoken  },
+  })
+    .then((response) => {
+        if(!response.ok){
+        throw new Error("HTTP error " + response.status);
+        }
+        return response.json();
+    })
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
+
+</script>

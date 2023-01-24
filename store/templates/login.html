@@ -12,10 +12,10 @@
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Shopping_cart_with_food_clip_art_2.svg/307px-Shopping_cart_with_food_clip_art_2.svg.png" alt=""
                 class="" style="height: 150px;">
             <!-- <hr> -->
-            <div class="display-8">Create An Account</div>
+            <div class="display-8" style="color: white;">Create An Account</div>
             <hr>
             </div>
-            <h3 hidden class="alert alert-light border mt-4 mb-4 rounded">Login Here</h3>
+            <h3 hidden class="alert alert-light border mt-4 mb-4 rounded" style="color: white;">Login Here</h3>
             <form action="/login" method="POST">
                 
                 {% csrf_token %}
@@ -27,7 +27,7 @@
                 {% endif %}
                 <!-- email -->
                 <div class="form-group">
-                    <label for="">Email</label>
+                    <label for="" style="color: white;">Email</label>
                     <input required type="email" name="email" id=""
                     value="{{values.email}}" 
                     class=" form-control-sm form-control" placeholder="example@gmail.com">
@@ -36,7 +36,7 @@
 
                 <!-- password -->
                 <div class="form-group">
-                    <label for="">Password</label>
+                    <label for="" style="color: white;">Password</label>
                     <input type="password" 
                     name="password" 
                     id=""

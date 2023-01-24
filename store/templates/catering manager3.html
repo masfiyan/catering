@@ -1,16 +1,46 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Catering Order Payment</title>
+  <style>
+    /* Define a background color */
 
-  <title>Sun-shine</title>
+    body {
+        background-color: #2C3E50;
+    }
+    nav{
+      background-color: black;
+    }
+    /* Define a container for the text */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    /* Define the text style */
+    .container h1 {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      color: black;
+    }
+    .one-edge-shadow {
+              box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
+}
+.display-8{
+  font-weight: 200;
+  font-size: 30px;
+}
+  </style>
+</head>
+<body>
   <nav class="one-edge-shadow 
   sticky-top navbar 
   navbar-expand-lg
@@ -29,90 +59,44 @@
 
       </ul>
 
-      </ul>
+
 
 
     </div>
   </nav>
-
-  <style>
-    body {
-        background-color: #2C3E50;
-    }
-    nav{
-      background-color: black;
-    }
-    .one-edge-shadow {
-              box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
-}
-.display-8{
-  font-weight: 200;
-  font-size: 30px;
-}
-  </style>
-
-<h1>Catering Manager</h1>
+<h1>Vendor</h1>
 <div id="receipt-container">
     
       
     
-    <br>
-    <label for="name">Order ID</label>
-    <!-- <input type="text", placeholder="{{ name }}" disabled > -->
-    <p style="color: black;">{{item.name}}</p>
-    <br>
-    
-    <p>{{address}}</p>
-    <br>
-    <label for="phone">Phone Number:</label>
-    <p style="color: black;">{{item.phone}}</p>
 
-    <br>
-    <label for="date">Booking Date:</label>
-    <p style="color: black;">{{item.date}}</p>
-    <br>
-    <label for="time">Delivery Time:</label>
-    <p style="color: black;">{{item.d_time}}</p>
-    <br>
-    <label for="email">Delivery Date</label>
-    <p style="color: black;">{{item.d_date}}</p>
-    <br>
-  </form>
+
     
  
     
     
     
 
- 
-    <!-- <label for="order-id">Order ID:</label>
-    <select id="order-id" onchange="loadOrder()">
-    {% comment %} {% for order in orders %} {% endcomment %}
-     <option value="{{ order.item }}">{{ order.id }}</option> -->
-   
-      
-      <!-- Add options for each order here -->
-    </select>
+
     <br>
     <table id="order-items">
       <tr>
-        <th>Item </th>
-      
-        <th>Quantity</th>
-        <th>Price</th>
-        {% for item_dict in orders %}
-        <tr>
-            <th>{{item_dict.product}}</th>
-            <th>{{item_dict.quantity}}</th>
-            <th>{{item_dict.price}}</th>
-        </tr>
+        <th>Item</th>
+        <th>quantity</th>
+        {% for customer in customers %}
+    <tr>
+      <td>{{ customer.item }}</td>
+      <td>{{ customer.quantity }}</td>
+
+    </tr>
     {% endfor %}
        
 
     </table>
     <form method="POST">
       {% csrf_token %}
-    <button type="submit" name="b_sent" value="<a hreh='sent_chef.html'>Sent</a>">Sent</button>
+      <input type="checkbox" id="myCheckbox">Arrange Raw material<p></p>
+    <button type="submit" name="b_sent" id="mybutton" value="<a hreh='vendor3.html' >Sent</a>">Sent</button>
   </form>
 
   
@@ -184,10 +168,7 @@ button {
 button:hover {
   background-color: #45a049;
 }
-/* body {
-    background-color: #444442;
-    padding-top: 0px;
-} */
+
 h1 {
     font-family: 'Poppins', sans-serif, 'arial';
     font-weight: 200;

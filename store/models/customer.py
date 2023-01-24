@@ -26,6 +26,6 @@ class Customer(models.Model):
         return  False
 
     def __str__(self):
-        return self.first_name + " "+self.last_name
-        #return str(self.id)
+        # return str(self.first_name + " " + self.last_name)
+        return str(self.id)
 
